@@ -8,4 +8,16 @@ renderでエラー内容を表示するための部分テンプレートを呼�
 <%= render 'shared/error_messages', model: f.object %>
 ~~~
 
-そのため form_with の前に上記の内容を記しても変数が定義されておらず、nameerrorが発生する！
+そのため form_with の前に上記の内容を記しても変数が定義されておらず、nameerrorが発生する！  
+
+  
+    
+**ログイン画面にエラー内容を表示するとき**  
+ビューに下記を設置する。  
+
+~~~
+ <div class='login-flash-message'>
+        <%= flash[:notice] %>
+        <%= flash[:alert] %>
+        </div>
+~~~
