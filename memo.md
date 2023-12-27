@@ -21,3 +21,14 @@ renderでエラー内容を表示するための部分テンプレートを呼�
         <%= flash[:alert] %>
         </div>
 ~~~
+
+
+**cssのpositionプロパティ**  
+positionプロパティを指定することで要素の位置を指定できる。  
+
+  position: absolute;  
+  要素に上記を指定するとHTMLの構造を無視して配置が可能。top,right,left,bottomと一緒に使用する。  
+
+  position: relative;  
+  基準にしたい要素に上記を指定し、動かしたい要素にposition: absolute;を指定すると、  
+  基準を基に要素の位置を決めることができる。
