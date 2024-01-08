@@ -31,4 +31,17 @@ positionプロパティを指定することで要素の位置を指定できる
 
   position: relative;  
   基準にしたい要素に上記を指定し、動かしたい要素にposition: absolute;を指定すると、  
-  基準を基に要素の位置を決めることができる。
+  基準を基に要素の位置を決めることができる。  
+
+
+  **Railsの link_to ~ do について**  
+  link_to に画像を指定することはできない。その際に下記の形で記述することで画像にリンク先を指定できる。  
+  末尾の <% end %> を忘れないようにする！  
+  
+  ~~~
+<%= link_to item_path(item.id) do %>
+  <div class='item-img-content'>
+  <%= image_tag item.image, class: "item-img" %>
+  </div>
+<% end %>
+  ~~~
