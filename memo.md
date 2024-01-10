@@ -1,6 +1,6 @@
 # til
 
-**エラーの内容が表示できないとき**  
+**◎エラーの内容が表示できないとき**  
 renderでエラー内容を表示するための部分テンプレートを呼び出す。  
 その際下記のように記述するが、「model: f.object」の f は、form_with内で使用できる変数のこと。
 
@@ -23,7 +23,7 @@ renderでエラー内容を表示するための部分テンプレートを呼�
 ~~~
 
 
-**cssのpositionプロパティ**  
+**◎cssのpositionプロパティ**  
 positionプロパティを指定することで要素の位置を指定できる。  
 
   position: absolute;  
@@ -34,7 +34,7 @@ positionプロパティを指定することで要素の位置を指定できる
   基準を基に要素の位置を決めることができる。  
 
 
-  **Railsの link_to ~ do について**  
+  **◎Railsの link_to ~ do について**  
   link_to に画像を指定することはできない。その際に下記の形で記述することで画像にリンク先を指定できる。  
   末尾の <% end %> を忘れないようにする！  
   
@@ -45,3 +45,47 @@ positionプロパティを指定することで要素の位置を指定できる
   </div>
 <% end %>
   ~~~
+
+**◎HTMLのtableタグについて**  
+tableタグは下記のような表を作成できる。  
+
+  
+|      名前        |     番号      | 
+| ------          | ------        | 
+|       こん       |       1       |
+|       梅        |       2       |  
+
+表を作成する時は、th要素・tr要素・td要素を一緒に使用していく。  
+
+
+th要素 → タイトル部分（名前/番号）  
+tr要素 → 表の行  
+td要素 → 表のデータ部分(こん,2など) 
+
+(例)  
+
+~~~
+<table class="detail-table">
+        <tr>
+          <th class="detail-item">出品者</th>
+          <td class="detail-value"><%= @item.user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">カテゴリー</th>
+          <td class="detail-value"><%= @item.category.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">商品の状態</th>
+          <td class="detail-value"><%= @item.status.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">発送元の地域</th>
+          <td class="detail-value"><%= @item.prefecture.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">発送日の目安</th>
+          <td class="detail-value"><%= @item.shipping_day.name %></td>
+        </tr>
+</table>
+
+~~~
