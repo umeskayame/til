@@ -89,3 +89,13 @@ td要素 → 表のデータ部分(こん,2など)
 </table>
 
 ~~~
+
+**◎cssのobject-fitプロパティ**  
+object-fitプロパティを使用すると、親要素に対してどのように画像や動画を埋め込むかを指定できる。  
+値は下記がある。  
+*contain  
+*cover  
+*fill  
+*none  
+*scale-down  
+>https://developer.mozilla.org/ja/docs/Web/CSS/object-fit
