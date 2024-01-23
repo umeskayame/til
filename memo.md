@@ -112,4 +112,27 @@ object-fitプロパティを使用すると、親要素に対してどのよう�
 例えばコメントの投稿や商品の登録など新たなデータを作成する時は、プライベートメソッドにストロングパラメーターを設置して、  
 どの情報を取得するかを記述する。  
 ※プライベートメソッドに記述していても、createアクションでストロングパラメーターを引数に指定し忘れた場合、  
-エラー（~ for nil:NilClass）が起きるので注意する。
+エラー（~ for nil:NilClass）が起きるので注意する。  
+
+**◎form_withメソッドにcssを適用する方法**  
+(例)
+~~~
+<%= form_with(model: [@item, @comment], local: true) do |form| %>
+ <%= form.text_area :content, placeholder: "コメントする", rows: "2" %>
+ <%= form.submit "送信する" %>
+<% end %>
+~~~
+
+上記のコメント記入欄と「送信」ボタンにcssを適用させたい場合、このようにcssを指定する。 
+form input, form （ヘルパーメソッドの種類）  
+
+・コメント欄  
+form input, form textarea  
+
+・送信ボタン  
+form input, form submit  
+
+**◎cssのborder-radiusプロパティ**  
+border-radiusプロパティはborderの角を丸めることができるもの。  
+>https://developer.mozilla.org/ja/docs/Web/CSS/border-radius
+
