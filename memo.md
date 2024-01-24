@@ -132,6 +132,8 @@ form input, form textarea
 ・送信ボタン  
 form input, form submit  
 
+※全てのform_withに設定されてしまうため、個別に設定する場合はヘルパーメソッドと一緒に ,class:"○○" という記述を追加する。
+
 **◎cssのborder-radiusプロパティ**  
 border-radiusプロパティはborderの角を丸めることができるもの。  
 >https://developer.mozilla.org/ja/docs/Web/CSS/border-radius
