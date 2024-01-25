@@ -138,3 +138,21 @@ form input, form submit
 border-radiusプロパティはborderの角を丸めることができるもの。  
 >https://developer.mozilla.org/ja/docs/Web/CSS/border-radius
 
+**◎button要素について**  
+button要素を使用するとページにボタンを作ることができる。  
+~~~
+<button type="属性" name="名前" value="値">
+  <font>ボタンに入れたい文字</font>
+</button>
+~~~
+
+type属性はボタンの種類を指定でき、下記がある。  
+・submit（初期値）  
+フォームに入力した内容を送信する  
+
+・reset  
+フォームに入力した内容をリセットする  
+
+・button  
+何もしない汎用的なボタン  
+
