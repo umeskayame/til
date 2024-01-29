@@ -156,3 +156,14 @@ type属性はボタンの種類を指定でき、下記がある。
 ・button  
 何もしない汎用的なボタン  
 
+**◎JacaScriptの document.addEventListener("DOMContentLoaded", function() {} について**  
+JavaScriptの記述で1行目に **document.addEventListener("DOMContentLoaded", function() {}** を記述すると、  
+HTMLが完全に読み込まれてからJavaScriptのコードが実行される。  
+
+**◎再読み込みをしないとJavaScriptが動作しない時の対処**  
+JavaScriptを設置したページに初めて遷移した時は動作するのに、その後は画面をリロードしないとJavaScriptが動作しない場合、  
+ターボリンクス（画面の遷移を速くするもの）が影響している可能性がある。  
+リロードしなくてもJavaScriptを読み込むためには、JavaScriptを設置したページへ到達するまでにクリックするボタンの全てに、  
+ターボを無効化する **data: { turbo: false }** を追加する。
+
+
