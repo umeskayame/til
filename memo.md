@@ -174,4 +174,52 @@ JavaScriptを設置したページに初めて遷移した時は動作するの�
 4. rails db:migrate でデータベースを実行する。
 
 ※rails db:rollback を行うと最新のマイグレーションファイルのみdownになるため、最新のファイルでない場合は  
-複数回rails db:rollbackを行なっていく。
+複数回rails db:rollbackを行なっていく。  
+
+**◎Rubyのany?メソッド**  
+配列に対して使えるメソッドで、要素の中に一つでも真であるものがあればtrueを返す。全ての要素が偽であればflseを返す。  
+使用方法は3つ。  
+
+1. 単独で使用
+   配列.any?  
+2. 各要素にパターンが含まれているかを確認
+   配列.any?(パターン)
+   (例)
+   ~~~
+   colors = [ 'black', 'gray', 'lightgray' ]
+   puts.any?(/light/)
+   ~~~
+   ⇨true
+3. 各要素に対して判定を行う
+   配列.any?{|変数| 変数を使った判定条件}
+   (例)
+   ~~~
+   animals = [ dog, cat, rabbit ]
+   nnimals.any? { |animal| animal == dog }
+   ~~~
+   ⇨true
+
+HappyTradeで使用したのは要素の判定を行う3。  
+~~~
+<% @comments.any? { |comment| comment.is_exchange_proposal? } %>
+~~~
+@commentsには複数のコメント情報が入っているため、変数を使用し、独自で作成したis_exchange_proposal?メソッドが各要素に当てはまるか調べている。  
+
+**◎ビジネスロジックについて**  
+ビジネスロジック（データに対する処理）は、コントローラーではなくモデルに記載する。  
+(例)
+~~~
+class Comment < ApplicationRecord
+  belongs_to :user
+  belongs_to :item
+
+  def is_exchange_proposal?
+    content.present? && content.include?("交換を希望しています。こちらのアイテムと交換いただくことは可能でしょうか。")
+  end
+
+end
+
+~~~
+この例では、コメントの内容は存在しているか、かつ特定のフレーズは含まれているかを確認するメソッド。  
+このメソッドをビューで ~.is_exchange_proposal? の形で使用している。
+   
