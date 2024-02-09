@@ -221,5 +221,23 @@ end
 
 ~~~
 この例では、コメントの内容は存在しているか、かつ特定のフレーズは含まれているかを確認するメソッド。  
-このメソッドをビューで ~.is_exchange_proposal? の形で使用している。
+このメソッドをビューで ~.is_exchange_proposal? の形で使用している。  
+
+**◎ログイン中のユーザーIDとコメント者のユーザーIDの一致確認**  
+~~~
+<% if current_user.id == @comment.user_id %>
+~~~
+上記ではエラーが発生する。原因は、コメントを表示するitemコントローラーで @comment = Comment.new と定義しており  
+これだと空のインスタンスを生成しただけでuserとは紐づいていないから。  
+また  @comments = @item.comments.includes(:user) より、 @comennts ではエラーが起きないように思えるが  
+複数のコメント情報が入っているため引き続きエラーが発生してしまう。  
+これを回避するために、まずは繰り返し処理の記述を行いコメントを一つずつ確認していく流れを作る。  
+（例）  
+~~~
+<% @comments.each do |comment| %>
+  <% if current_user.id == comment.user_id %>
+    <%= "コメントした人のテスト表示" %>
+  <% end %>
+<% end %>
+~~~
    
