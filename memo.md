@@ -240,4 +240,10 @@ end
   <% end %>
 <% end %>
 ~~~
+
+**◎マイグレーションで外部キー制約をかける時**  
+外部キー制約をかけるとき、すでに作成したテーブルの主キーをカラム名に指定するのであれば、 t.references :カラム名,  foreign_key: true でOK。  
+しかし作成したテーブルの主キー名を一部変更するのであれば、 t.references :カラム名, foreign_key:  { to_table: :参照先のテーブル名 } にする。  
+（例）  
+ t.references :buyer_user,         null: false, foreign_key: { to_table: :user }
    
