@@ -245,5 +245,29 @@ end
 外部キー制約をかけるとき、すでに作成したテーブルの主キーをカラム名に指定するのであれば、 t.references :カラム名,  foreign_key: true でOK。  
 しかし作成したテーブルの主キー名を一部変更するのであれば、 t.references :カラム名, foreign_key:  { to_table: :参照先のテーブル名 } にする。  
 （例）  
- t.references :buyer_user,         null: false, foreign_key: { to_table: :user }
+ t.references :buyer_user,         null: false, foreign_key: { to_table: :user }  
+
+**◎attr_accessorについて**  
+attr_accessor とは、モデルやコントローラーにおいてゲッター（値の取得をする）とセッター（値の更新をする）を記述してくれるもの。  
+こうすることで、指定した値がform_withメソッドの引数に指定できるようになる。  
+
+（モデルでのイメージ例）  
+attr_accessors使用前
+~~~
+class Order
+  def price #ゲッター
+    @price
+  end
+
+  def price=(price) #セッター
+    @price = price
+  end
+end
+~~~
+attr_accessors使用後  
+~~~
+class Order
+  attr_accessor :price
+end
+~~~
    
