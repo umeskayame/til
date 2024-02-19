@@ -288,4 +288,18 @@ Formオブジェクトを利用するパターンは2つある。
 ~~~
 <%= form_with model: @trade_delivery, url: item_trades_path, data: { turbo: false } %>
 ~~~
+
+**◎"モデル名.new"をした時のカラムとインスタンス変数の紐付け**  
+独自で作成したインスタンス変数とdbのカラムを一致させたい時、 モデル名.new（） と記述し  
+()内にカラム名と紐づけるインスタンス変数を記述する。  
+
+（例）  
+~~~
+@trade_delivery = TradeDelivery.new(
+      user_id: @seller.id,
+      item_id: @seller_item.id,
+      buyer_user_id: @buyer.id,
+      buyer_item_id: @item.id
+    )
+~~~
    
