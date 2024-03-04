@@ -306,4 +306,37 @@ Formオブジェクトを利用するパターンは2つある。
 **◎find_byの使い方**  
 条件に合致する最初のレコードを1件のみ取得できる。  
 モデル名.find_by(条件)  
-複数のデータを取得したいならwhereメソッドを使用する！
+複数のデータを取得したいならwhereメソッドを使用する！  
+
+**◎アロー関数とforEach関数について**  
+アロー関数は、即時関数や無名関数（関数式）の "function" の記述を "()  => " に省略したもの。
+
+~~~
+// 無名関数
+const 変数名 = function(){
+  処理
+}
+
+// アロー関数
+const 変数名 = () => {
+  処理
+}
+~~~
+
+forEach関数は繰り返し処理を行う関数で下記のように使用する。  
+配列.forEach(function(value){
+ 処理の内容
+})  
+
+~~~
+
+配列.forEach( function(value){
+  // 処理の記述
+})
+
+fruits = ["apple", "orange", "grape"]
+fruits.forEach( function(item) {
+  console.log(item)　// 配列に格納されている要素の数だけ実行される
+})
+~~~
+**forEach関数を利用するときは、document.querySelectorAll("セレクタ名")でHTMLの取得を行う。**
