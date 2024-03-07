@@ -339,4 +339,19 @@ fruits.forEach( function(item) {
   console.log(item)　// 配列に格納されている要素の数だけ実行される
 })
 ~~~
-**forEach関数を利用するときは、document.querySelectorAll("セレクタ名")でHTMLの取得を行う。**
+**forEach関数を利用するときは、document.querySelectorAll("セレクタ名")でHTMLの取得を行う。**  
+
+**◎マイグレーションをdownにせずにモデルを削除してしまった場合**  
+モデルを削除するとマイグレーションも削除されてしまうため、モデルを削除する時は必ず先にマイグレーションをdownさせておく。  
+もしdownにせずにモデルを削除してしまった場合、下記の流れて対応する。  
+
+①ターミナルで rails db:migrate:status を行い、no file になっているマイグレーションIDをコピーする。  
+②VSコード上でマイグレーションファイルを手動で追加する。ファイルの名前は "コピーしたマイグレーションID_sample.rb"。
+   ファイルの記述は下記のようにする。
+   ~~~
+  class Sample < ActiveRecord::Migration[6.0]
+    def change
+    end
+  end
+   ~~~
+③再度　rails db:migrate:status　でdownになっていることを確認し、rails db:migrate:rollback を行う。
