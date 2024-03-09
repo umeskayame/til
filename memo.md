@@ -354,4 +354,10 @@ fruits.forEach( function(item) {
     end
   end
    ~~~
-③再度　rails db:migrate:status　でdownになっていることを確認し、rails db:migrate:rollback を行う。
+③再度　rails db:migrate:status　でdownになっていることを確認し、rails db:migrate:rollback を行う。  
+
+**◎HTMLのlabel要素について**  
+label要素を使用することでform部品と関連づけることができる。  
+例えばチェックボックスやラジオボタンを使用して入力フォームを作る場合、関連付けを行なっていればボックスやボタン部分をクリックしなくても
+ラベルの文書をクリックすればチェックがつく。  
+>https://www.tagindex.com/html/form/label.html
