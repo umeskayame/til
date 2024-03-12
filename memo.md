@@ -356,8 +356,30 @@ fruits.forEach( function(item) {
    ~~~
 ③再度　rails db:migrate:status　でdownになっていることを確認し、rails db:migrate:rollback を行う。  
 
+**◎Renderでデプロイした時、本番環境のテーブルが変更されていない場合**  
+テーブルの変更を行い、開発環境では変更が適用されているのに本番環境では適用されていない場合、「ActiveModel::UnknownAttributeError」が発生する。  
+下記の方法で解決する！  
+①bin/render-build.sh で、8行目をコメントアウトして9行目を追加。
+~~~
+#!/usr/bin/env bash
+# exit on error
+set -o errexit
+
+bundle install
+bundle exec rake assets:precompile
+bundle exec rake assets:clean
+# bundle exec rake db:migrate
+DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake db:migrate:reset
+~~~
+
+②TablePlusを一旦閉じる  
+③GitHubにプッシュして本番環境で動作確認  
+④問題がなければ①を元の記述に戻す（8行目のコメントアウトを解除し9行目を削除）
+
 **◎HTMLのlabel要素について**  
 label要素を使用することでform部品と関連づけることができる。  
 例えばチェックボックスやラジオボタンを使用して入力フォームを作る場合、関連付けを行なっていればボックスやボタン部分をクリックしなくても
 ラベルの文書をクリックすればチェックがつく。  
 >https://www.tagindex.com/html/form/label.html
+
+
