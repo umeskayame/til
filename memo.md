@@ -382,4 +382,20 @@ label要素を使用することでform部品と関連づけることができ�
 ラベルの文書をクリックすればチェックがつく。  
 >https://www.tagindex.com/html/form/label.html
 
+**◎ヘルパーメソッドの隠しフィールド（hidden_field）について**  
+Form部品のヘルパーメソッドで、"hidden_field" を使用するとビューにはその値が表示されなくなる。  
+下記の例の場合、user_id と item_id　の入力欄は表示されず、送信ボタンである交換のためのボタンのみ表示される。  
+どこかのテーブルとアソシエーションを組み外部キーを使用する場合、このように隠しフィールドでform_withメソッドに入れる必要がある！
+（例）  
+~~~
+<%= form_with model: @trade, url: item_trades_path, data: { turbo: false }, local: true do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :item_id %>
+    
+    <div class='trade-btn'>
+      <%= f.submit "交換する" ,class:"trade-red-btn", id:"button" %>
+    </div>
+<% end %>
+~~~
+
 
