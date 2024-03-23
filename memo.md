@@ -398,4 +398,12 @@ Form部品のヘルパーメソッドで、"hidden_field" を使用するとビ�
 <% end %>
 ~~~
 
+**◎ActiveHashの項目名をビューに表示する方法**  
+例えば都道府県のカラムにActiveHashを用いていて、登録時のデータをどこかのビューに表示したい場合、表示方法は下記の2通りある。  
+（例）  
+1. @item.prefecture.name
+   【インスタンス変数 + _idを省略したカラム名 + ActiveHashの表示名】
+3. Prefecture.find(@item.user.prefecture_id).name
+   【_idを省略したカラム名.find(インスタンス変数 + カラム名).ActiveHashの表示名】
+
 
